@@ -1,0 +1,10 @@
+.idea
+/logs
+/data
+/.project
+/runtime
+
+.DS_Store
+
+
+.env
