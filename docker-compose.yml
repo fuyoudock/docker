@@ -48,6 +48,14 @@ services:
       ports:
         - "${PHP_WEB_PORT}:80"
 
+### Python Web ################################################
+    python-web:
+      build: 
+        context: ./python-web
+        args:
+          - PYTHON_VERSION=${PYTHON_WEB_PYTHON_VERSION}
+      tty: true
+
 ### Redis ################################################
     redis:
       build: ./redis
