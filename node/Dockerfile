@@ -7,7 +7,7 @@ LABEL maintainer="Tylor ZHANG <tylor.zhang@outlook.com>"
 ###########################################################################
 # Source:
 ###########################################################################
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/' /etc/apk/repositories && \
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirror.tuna.tsinghua.edu.cn/' /etc/apk/repositories && \
     apk update && \
     apk upgrade && \
     apk add --no-cache bash python make g++
@@ -19,10 +19,10 @@ RUN apk add --no-cache tzdata && \
     cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 ###########################################################################
-# Engines:
+# Registry:
 ###########################################################################
-RUN yarn config set ignore-engines true && \
-    npm config set ignore-engines true
+RUN npm config set registry https://registry.npm.taobao.org && \
+    yarn config set registry https://registry.npm.taobao.org
 
 ###########################################################################
 # Clean up:
