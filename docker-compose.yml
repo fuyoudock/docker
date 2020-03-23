@@ -30,6 +30,7 @@ services:
         context: ./node
         args:
           - NODE_VERSION=${NODE_VERSION}
+          - NODE_REGISTRY=${NODE_REGISTRY}
       tty: true
       ports:
         - "${NODE_PORT}:3000"

@@ -21,8 +21,9 @@ RUN apk add --no-cache tzdata && \
 ###########################################################################
 # Registry:
 ###########################################################################
-RUN npm config set registry https://registry.npm.taobao.org && \
-    yarn config set registry https://registry.npm.taobao.org
+ARG NODE_REGISTRY=http://registry.npmjs.org
+RUN npm config set registry ${NODE_REGISTRY} && \
+    yarn config set registry ${NODE_REGISTRY}
 
 ###########################################################################
 # Clean up:
