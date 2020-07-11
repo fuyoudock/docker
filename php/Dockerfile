@@ -26,8 +26,8 @@ RUN apk add --no-cache tzdata && \
 COPY nginx.conf /etc/nginx/
 RUN apk add --no-cache nginx && \
     echo "upstream php-upstream { server 127.0.0.1:9000; }" > /etc/nginx/conf.d/upstream.conf && \
-    rm /etc/nginx/conf.d/default.conf && \
-    chown -R www-data:root /var/tmp/nginx
+    rm /etc/nginx/conf.d/default.conf
+    # chown -R www-data:root /var/tmp/nginx
 
 ###########################################################################
 # Php ini:

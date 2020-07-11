@@ -35,19 +35,19 @@ services:
       ports:
         - "${NODE_PORT}:3000"
 
-### Php-web ################################################
-    php-web:
+### Php ################################################
+    php:
       build:
-        context: ./php-web
+        context: ./php
         args:
-          - PHP_VERSION=${PHP_WEB_PHP_VERSION}
-          - INSTALL_XDEBUG=${PHP_WEB_INSTALL_XDEBUG}
+          - PHP_VERSION=${PHP_VERSION}
+          - INSTALL_XDEBUG=${PHP_INSTALL_XDEBUG}
       volumes:
         - ${RUNTIME_PATH}/log/nginx/php-web:/var/log/nginx
         - ./php-web/sites:/etc/nginx/sites-available
         - ./php-web/xdebug.ini/:/usr/local/etc/php/conf.d/xdebug.ini
       ports:
-        - "${PHP_WEB_PORT}:80"
+        - "${PHP_NGINX_PORT}:80"
 
 ### Python Web ################################################
     python-web:
