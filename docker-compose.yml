@@ -49,12 +49,12 @@ services:
       ports:
         - "${PHP_NGINX_PORT}:80"
 
-### Python Web ################################################
-    python-web:
+### Python ################################################
+    python:
       build: 
-        context: ./python-web
+        context: ./python
         args:
-          - PYTHON_VERSION=${PYTHON_WEB_PYTHON_VERSION}
+          - PYTHON_VERSION=${PYTHON_VERSION}
       tty: true
 
 ### Redis ################################################
