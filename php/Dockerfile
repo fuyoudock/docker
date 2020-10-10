@@ -32,7 +32,7 @@ RUN apk add --no-cache nginx && \
 ###########################################################################
 # Php ini:
 ###########################################################################
-RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
+RUN cp "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
 ###########################################################################
 # Composer:
