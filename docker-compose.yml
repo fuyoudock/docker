@@ -43,9 +43,9 @@ services:
         - PHP_VERSION=${PHP_VERSION}
         - INSTALL_XDEBUG=${PHP_INSTALL_XDEBUG}
     volumes:
-      - ${RUNTIME_PATH}/log/nginx/php-web:/var/log/nginx
-      - ./php-web/sites:/etc/nginx/sites-available
-      - ./php-web/xdebug.ini/:/usr/local/etc/php/conf.d/xdebug.ini
+      - ${RUNTIME_PATH}/log/nginx/php:/var/log/nginx
+      - ./php/sites:/etc/nginx/sites-available
+      - ./php/xdebug.ini/:/usr/local/etc/php/conf.d/xdebug.ini
     ports:
       - "${PHP_NGINX_PORT}:80"
 
