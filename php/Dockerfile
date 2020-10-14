@@ -26,8 +26,8 @@ RUN apk add --no-cache tzdata && \
 COPY nginx.conf /etc/nginx/
 RUN apk add --no-cache nginx && \
     echo "upstream php-upstream { server 127.0.0.1:9000; }" > /etc/nginx/conf.d/upstream.conf && \
-    rm /etc/nginx/conf.d/default.conf
-    # chown -R www-data:root /var/tmp/nginx
+    rm /etc/nginx/conf.d/default.conf && \
+    chown -R www-data:nginx /var/lib/nginx
 
 ###########################################################################
 # Php ini:
@@ -83,15 +83,6 @@ RUN apk add --no-cache libxml2-dev && \
 RUN apk add --no-cache imagemagick imagemagick-libs imagemagick-dev && \
     pecl install imagick && \
     docker-php-ext-enable imagick
-                
-###########################################################################
-# Php xdebug:
-###########################################################################
-ARG INSTALL_XDEBUG=false
-RUN if [ ${INSTALL_XDEBUG} = true ]; then \
-    pecl install xdebug && \
-    docker-php-ext-enable xdebug \
-;fi
 
 ###########################################################################
 # Php intl:
@@ -105,6 +96,15 @@ RUN apk add --no-cache icu icu-libs icu-dev && \
 ###########################################################################
 RUN apk add --no-cache libxslt-dev libgcrypt-dev && \
     docker-php-ext-install xsl
+
+###########################################################################
+# Php xdebug:
+###########################################################################
+ARG INSTALL_XDEBUG=false
+RUN if [ ${INSTALL_XDEBUG} = true ]; then \
+    pecl install xdebug && \
+    docker-php-ext-enable xdebug \
+;fi
 
 ###########################################################################
 # Clean up:
