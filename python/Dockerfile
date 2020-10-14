@@ -19,6 +19,11 @@ RUN apk add --no-cache tzdata && \
     cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 ###########################################################################
+# Pylint:
+###########################################################################
+RUN pip install -i https://mirrors.aliyun.com/pypi/simple --no-cache-dir pylint
+
+###########################################################################
 # Clean up:
 ###########################################################################
 RUN apk del tzdata && \
