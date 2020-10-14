@@ -13,15 +13,15 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/' /etc/apk/repositories 
     apk add --no-cache bash mariadb-dev gcc libc-dev libxml2-dev libxslt-dev  libffi-dev
 
 ###########################################################################
+# Index-url:
+###########################################################################
+RUN pip config set global.index-url https://mirrors.aliyun.com/pypi/simple
+
+###########################################################################
 # Timezone:
 ###########################################################################
 RUN apk add --no-cache tzdata && \
     cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-
-###########################################################################
-# Pylint:
-###########################################################################
-RUN pip install -i https://mirrors.aliyun.com/pypi/simple --no-cache-dir pylint
 
 ###########################################################################
 # Clean up:
