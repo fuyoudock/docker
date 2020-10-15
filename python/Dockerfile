@@ -10,7 +10,7 @@ LABEL maintainer="Tylor ZHANG <tylor.zhang@outlook.com>"
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/' /etc/apk/repositories && \
     apk update && \
     apk upgrade && \
-    apk add --no-cache bash mariadb-dev gcc libc-dev libxml2-dev libxslt-dev  libffi-dev
+    apk add --no-cache bash mariadb-dev gcc libc-dev libxml2-dev libxslt-dev  libffi-dev openssh
 
 ###########################################################################
 # Index-url:
