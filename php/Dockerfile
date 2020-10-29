@@ -98,6 +98,13 @@ RUN apk add --no-cache libxslt-dev libgcrypt-dev && \
     docker-php-ext-install xsl
 
 ###########################################################################
+# Php Redis:
+###########################################################################
+RUN pecl install -o -f redis && \
+    rm -rf /tmp/pear && \
+    docker-php-ext-enable redis
+
+###########################################################################
 # Php xdebug:
 ###########################################################################
 ARG INSTALL_XDEBUG=false
